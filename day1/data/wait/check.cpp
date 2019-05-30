@@ -35,7 +35,7 @@ int solve()
 	for(int i=1;i<=n;i++)
 	{
 		s[i]+=s[i-1];
-		printf("%d ",s[i]);
+		// printf("%d ",s[i]);
 		if(abs(s[i])>1)
 			return 0;
 	}
@@ -51,12 +51,12 @@ int solve()
 }
 int main()
 {
-	for(int i=15;i<=15;i++)
+	for(int i=1;i<=50;i++)
 	{
 		char sin[20],sans[20],scmd[20];
-		sprintf(scmd,"copy b%d.in wait.in",i);
+		sprintf(scmd,"cp b%d.in wait.in",i);
 		system(scmd);
-		// system("wait.exe");
+		system("./wait");
 		sprintf(sin,"b%d.in",i);
 		sprintf(sans,"b%d.out",i);
 		FILE *in=fopen(sin,"r"),*ans=fopen(sans,"r"),*out=fopen("wait.out","r");

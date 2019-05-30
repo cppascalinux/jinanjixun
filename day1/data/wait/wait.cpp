@@ -11,7 +11,7 @@
 using namespace std;
 int n,m,tot=1;
 int l[30009],r[30009],w[30009];
-int v[60009];
+int v[60009],tv[60009];
 int deg[60009];
 int hd[60009],eg[3000009],nxt[3000009],cap[3000009],id[3000009];
 int dep[60009],cur[60009];
@@ -41,7 +41,6 @@ void init()
 		l[i]=lower_bound(v+1,v+n+1,l[i])-v;
 		r[i]=lower_bound(v+1,v+n+1,r[i])-v;
 	}
-	n+=2;
 }
 int bfs(int s,int t)
 {
@@ -93,28 +92,38 @@ int flow(int s,int t)
 int adde()
 {
 	for(int i=1;i<=m;i++)
-		if(w[i]!=1)
-			deg[l[i]]++,deg[r[i]+1]--;
+		if(w[i]==1)
+			deg[l[i]]--,deg[r[i]]++;
 		else
-			deg[l[i]]--,deg[r[i]+1]++;
+			deg[l[i]]++,deg[r[i]]--;
 	for(int i=1;i<=m;i++)
 		if(w[i]==-1)
-			ins(l[i],r[i]+1,1,i);
+			ins(l[i],r[i],1,i);
 	int lst=0;
 	for(int i=1;i<=n;i++)
 		if(deg[i]%2)
 		{
-			if(!lst)
-				lst=i;
-			else
+			if(lst)
 			{
 				ins(lst,i,1,0);
 				deg[lst]++,deg[i]--;
-				lst=0;
 			}
+			lst=i;
 		}
-	if(lst)
-		return printf("-1"),0;
+	// int tpv=0;
+	// for(int i=1;i<=m;i++)
+	// 	tv[++tpv]=l[i],tv[++tpv]=r[i];
+	// sort(tv+1,tv+tpv+1);
+	// for(int i=1;i<=tpv;i+=2)
+	// {
+	// 	if(tv[i]!=tv[i+1])
+	// 	{
+	// 		deg[tv[i]]++,deg[tv[i+1]]--;
+	// 		ins(tv[i],tv[i+1],1,0);
+	// 	}
+	// }
+	// if(lst)
+	// 	return printf("-1"),0;
 	int sm=0;
 	for(int i=1;i<=n;i++)
 		assert(deg[i]%2==0),sm+=deg[i];
@@ -139,6 +148,7 @@ void dbg()
 }
 void solve()
 {
+	// dbg();
 	int s=n+1,t=n+2;
 	int f=flow(s,t);
 	for(int i=hd[s];i;i=nxt[i])
@@ -162,10 +172,10 @@ int main()
 	freopen("wait.out","w",stdout);
 	scanf("%d%d",&m,&n);
 	for(int i=1;i<=m;i++)
-		scanf("%d%d%d",l+i,r+i,w+i),assert(l[i]<=r[i]);
+		scanf("%d%d%d",l+i,r+i,w+i),assert(l[i]<=r[i]),r[i]++;
 	init();
 	if(adde())
 		solve();
-	dbg();
+	// dbg();
 	return 0;
 }
