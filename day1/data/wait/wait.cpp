@@ -6,13 +6,14 @@
 #include<cstring>
 #include<algorithm>
 #include<queue>
+#include<cassert>
 #define inf 0x7F7F7F7F
 using namespace std;
 int n,m,tot=1;
 int l[30009],r[30009],w[30009];
 int v[60009];
 int deg[60009];
-int hd[60009],eg[300009],nxt[300009],cap[300009],id[300009];
+int hd[60009],eg[3000009],nxt[3000009],cap[3000009],id[3000009];
 int dep[60009],cur[60009];
 void ins(int a,int b,int c,int d)
 {
@@ -21,6 +22,12 @@ void ins(int a,int b,int c,int d)
 	id[tot]=d;
 	nxt[tot]=hd[a];
 	hd[a]=tot;
+
+	eg[++tot]=a;
+	cap[tot]=0;
+	id[tot]=d;
+	nxt[tot]=hd[b];
+	hd[b]=tot;
 }
 void init()
 {
@@ -34,7 +41,7 @@ void init()
 		l[i]=lower_bound(v+1,v+n+1,l[i])-v;
 		r[i]=lower_bound(v+1,v+n+1,r[i])-v;
 	}
-	n++;
+	n+=2;
 }
 int bfs(int s,int t)
 {
@@ -89,43 +96,57 @@ int adde()
 		if(w[i]!=1)
 			deg[l[i]]++,deg[r[i]+1]--;
 		else
-			deg[r[i]+1]++,deg[l[i]]--;
+			deg[l[i]]--,deg[r[i]+1]++;
 	for(int i=1;i<=m;i++)
 		if(w[i]==-1)
-			ins(l[i],r[i]+1,1,i),ins(r[i]+1,l[i],0,i);
+			ins(l[i],r[i]+1,1,i);
 	int lst=0;
 	for(int i=1;i<=n;i++)
-		if(deg[i]%2!=0)
+		if(deg[i]%2)
 		{
 			if(!lst)
 				lst=i;
 			else
 			{
-				ins(lst,i,1,0),ins(i,lst,0,0);
+				ins(lst,i,1,0);
 				deg[lst]++,deg[i]--;
 				lst=0;
 			}
 		}
 	if(lst)
 		return printf("-1"),0;
+	int sm=0;
+	for(int i=1;i<=n;i++)
+		assert(deg[i]%2==0),sm+=deg[i];
+	assert(sm==0);
 	int s=n+1,t=n+2;
 	for(int i=1;i<=n;i++)
 		if(deg[i]>0)
 			ins(s,i,deg[i]/2,0);
-		else
+		else if(deg[i]<0)
 			ins(i,t,-deg[i]/2,0);
 	return 1;
+}
+void dbg()
+{
+	printf("n:%d\n",n);
+	for(int i=1;i<=n;i++)
+		printf("i:%d deg:%d\n",i,deg[i]);
+	for(int i=1;i<=n+2;i++)
+		for(int j=hd[i];j;j=nxt[j])
+			// if(eg[j]!=n+1&&eg[j]!=n+2)
+				printf("i:%d j:%d cap:%d\n",i,eg[j],cap[j]);
 }
 void solve()
 {
 	int s=n+1,t=n+2;
-	int f=flow(n+1,n+2);
+	int f=flow(s,t);
 	for(int i=hd[s];i;i=nxt[i])
 		if(cap[i])
 			return printf("-1"),void();
 	for(int i=1;i<=n;i++)
 		for(int j=hd[i];j;j=nxt[j])
-			if(cap[j])
+			if(eg[j]<=n&&cap[j])
 			{
 				if(eg[j]>i)
 					w[id[j]]=0;
@@ -141,9 +162,10 @@ int main()
 	freopen("wait.out","w",stdout);
 	scanf("%d%d",&m,&n);
 	for(int i=1;i<=m;i++)
-		scanf("%d%d%d",l+i,r+i,w+i);
+		scanf("%d%d%d",l+i,r+i,w+i),assert(l[i]<=r[i]);
 	init();
 	if(adde())
 		solve();
+	dbg();
 	return 0;
 }
