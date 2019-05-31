@@ -77,7 +77,7 @@ int main()
 	freopen("circle.in","r",stdin);
 	freopen("circle.out","w",stdout);
 	scanf("%d%d",&n,&m);
-	if(n<=3)
+	if(n<=4)
 		p1::solve();
 	else
 		p2::solve();
