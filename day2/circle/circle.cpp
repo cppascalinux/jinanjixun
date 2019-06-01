@@ -2,84 +2,64 @@
 #include<cstdio>
 #include<cstring>
 #include<algorithm>
+#define li long long
 using namespace std;
-int n,m;
-namespace p1
+int n;
+li k;
+li cb[40][40];
+int h[40];
+int e[40][40];
+void init()
 {
-	int e[59][59],vis[59];
-	void solve()
-	{
-		int teg=n*n;
-		for(int s=0;s<1<<teg;s++)
-		{
-			for(int i=1;i<=n;i++)
-				for(int j=1;j<=n;j++)
-				{
-					int p=(i-1)*n+j;
-					e[i][j]=(s>>(p-1))&1;
-				}
-			int sm=0;
-			for(int t=0;t<1<<n;t++)
-			{
-				int sm1=0,sm2=0;
-				for(int i=1;i<=n;i++)
-					vis[i]=0;
-				for(int i=1;i<=n;i++)
-					if((t>>(i-1))&1)
-					{
-						sm1++;
-						for(int j=1;j<=n;j++)
-							vis[j]|=e[i][j];
-					}
-				for(int i=1;i<=n;i++)
-					if(vis[i])
-						sm2++;
-				if(sm1>sm2)
-					sm++;
-			}
-			if(sm==m)
-			{
-				for(int i=1;i<=n;i++)
-				{
-					for(int j=1;j<=n;j++)
-						printf("%d ",e[i][j]);
-					printf("\n");
-				}
-				return;
-			}
-		}
-		printf("-1");
-	}
+	for(int i=0;i<=n;i++)
+		cb[i][0]=cb[i][i]=1;
+	for(int i=2;i<=n;i++)
+		for(int j=1;j<=i-1;j++)
+			cb[i][j]=cb[i-1][j]+cb[i-1][j-1];
 }
-namespace p2
+void solve()
 {
-	int e[59][59];
-	void solve()
-	{
-		if(m>(1LL<<n)-1)
-			return printf("-1"),void();
-		int bit=0;
-		while(1<<bit<m)
-			bit++;
-		for(int i=bit+1;i<=n;i++)
-			for(int j=2;j<=n;j++)
-				e[i][j]=1;
-		for(int i=1;i<=n;i++)
+	li sm=k;
+	for(int i=n-1;i>=0;i--)
+		for(int j=0;j<=i;j++)
 		{
-			for(int j=1;j<=n;j++)
-				printf("%d ",e[i][j]);
-			printf("\n");
+			if(sm>=cb[i][j])
+			{
+				sm-=cb[i][j];
+				h[n-i]=j+1;
+			}
+			else
+				break;
 		}
+	// for(int i=1;i<=n;i++)
+	// 	printf("i:%d h:%d\n",i,h[i]);
+	// for(int i=0;i<=n;i++)
+	// 	for(int j=0;j<=n;j++)
+	// 		printf("i:%d j:%d cb:%lld\n",i,j,cb[i][j]);
+}
+void output()
+{
+	for(int i=1;i<=n;i++)
+	{
+		for(int j=1;j<=n;j++)
+			if(j<=h[i])
+				printf("1 ");
+			else
+				printf("0 ");
+		printf("\n");
 	}
 }
 int main()
 {
 	freopen("circle.in","r",stdin);
 	freopen("circle.out","w",stdout);
-	scanf("%d%d",&n,&m);
-	if(n<=4)
-		p1::solve();
-	else
-		p2::solve();
+	scanf("%d%lld",&n,&k);
+	if(k>(1LL<<n)-1)
+		return printf("-1"),0;
+	k=(1LL<<n)-1-k;
+	// printf("k:%lld\n",k);
+	init();
+	solve();
+	output();
 	return 0;
 }
