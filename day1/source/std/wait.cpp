@@ -72,6 +72,7 @@ int main(){
 	for(int i=1;i<=mtp;i+=2){
 		int x=lower_bound(lsh+1,lsh+tp+1,lx[i])-lsh;
 		int y=lower_bound(lsh+1,lsh+tp+1,lx[i+1])-lsh;
+		
 		if(x==y)continue;
 		tg[i]=rand()%2;
 		if(tg[i]==0)in[y]++,out[x]++;

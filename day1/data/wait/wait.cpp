@@ -99,29 +99,31 @@ int adde()
 	for(int i=1;i<=m;i++)
 		if(w[i]==-1)
 			ins(l[i],r[i],1,i);
-	int lst=0;
-	for(int i=1;i<=n;i++)
-		if(deg[i]%2)
-		{
-			if(lst)
-			{
-				ins(lst,i,1,0);
-				deg[lst]++,deg[i]--;
-			}
-			lst=i;
-		}
-	// int tpv=0;
-	// for(int i=1;i<=m;i++)
-	// 	tv[++tpv]=l[i],tv[++tpv]=r[i];
-	// sort(tv+1,tv+tpv+1);
-	// for(int i=1;i<=tpv;i+=2)
-	// {
-	// 	if(tv[i]!=tv[i+1])
+	// int lst=0;
+	// for(int i=1;i<=n;i++)
+	// 	if(deg[i]%2)
 	// 	{
-	// 		deg[tv[i]]++,deg[tv[i+1]]--;
-	// 		ins(tv[i],tv[i+1],1,0);
+	// 		if(!lst)
+	// 			lst=i;
+	// 		else
+	// 		{
+	// 			ins(lst,i,1,0);
+	// 			deg[lst]++,deg[i]--;
+	// 			lst=0;
+	// 		}
 	// 	}
-	// }
+	int tpv=0;
+	for(int i=1;i<=m;i++)
+		tv[++tpv]=l[i],tv[++tpv]=r[i];
+	sort(tv+1,tv+tpv+1);
+	for(int i=1;i<=tpv;i+=2)
+	{
+		if(tv[i]!=tv[i+1])
+		{
+			deg[tv[i]]++,deg[tv[i+1]]--;
+			ins(tv[i],tv[i+1],1,0);
+		}
+	}
 	// if(lst)
 	// 	return printf("-1"),0;
 	int sm=0;
