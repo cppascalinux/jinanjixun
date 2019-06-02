@@ -127,7 +127,7 @@ void add(int a,int l,int r,int ll,int rr,int vl,int vr,int vc)
 	down(a);
 	int mid=(l+r)>>1;
 	add(a<<1,l,mid,ll,rr,vl,vr,vc);
-	add(a<<1,mid+1,r,ll,rr,vl,vr,vc);
+	add(a<<1|1,mid+1,r,ll,rr,vl,vr,vc);
 }
 int ask(int a,int l,int r,int pos)
 {
@@ -189,12 +189,14 @@ bool cmp(ppi a,ppi b)
 }
 void solve()
 {
+	for(int i=1;i<=4*n;i++)
+		lm[i]=1,rm[1]=n;
 	sort(qry+1,qry+q+1,cmp);
 	int cur=0;
 	for(int i=1;i<=q;i++)
 	{
 		while(cur<qry[i].fi.se)
-			modify(pe[i].fi,pe[i].se,++cur);
+			++cur,modify(pe[cur].fi,pe[cur].se,cur);
 		ans[qry[i].se]=askc(qry[i].fi.fi);
 	}
 	for(int i=1;i<=q;i++)
