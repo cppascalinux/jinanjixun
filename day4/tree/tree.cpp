@@ -190,7 +190,7 @@ bool cmp(ppi a,ppi b)
 void solve()
 {
 	for(int i=1;i<=4*n;i++)
-		lm[i]=1,rm[1]=n;
+		lm[i]=1,rm[i]=n;
 	sort(qry+1,qry+q+1,cmp);
 	int cur=0;
 	for(int i=1;i<=q;i++)
@@ -201,6 +201,11 @@ void solve()
 	}
 	for(int i=1;i<=q;i++)
 		printf("%d\n",ans[i]);
+}
+void dbg()
+{
+	for(int i=1;i<=n;i++)
+		printf("i:%d sz:%d top:%d f0:%d son:%d\n",i,sz[i],top[i],f[i][0],son[i]);
 }
 int main()
 {
@@ -215,7 +220,8 @@ int main()
 	}
 	n=2*n-1;
 	dfs1(1,0);
-	dfs2(1,0);
+	dfs2(1,1);
+	// dbg();
 	for(int i=1;i<=n;i++)
 	{
 		psm[i]=psm[i-1];
