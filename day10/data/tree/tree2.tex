@@ -1,0 +1,37 @@
+\begin{problem}{Tree}
+{stdin}{stdout}{3 second}{1024 megabytes}
+
+你有两棵$1$到$n$标号带权的树，分别为$T_1, T_2$，两个点$u,v$在两棵树中的距离分别是$d_1(u,v), d_2(u,v)$。
+
+请问$$\sum_{u=1}^n \sum_{v=1} ^n d_1(u,v) d_2(u,v)$$
+
+由于答案可能很大，对$10^9+7$取模。
+
+\Input
+
+第一行一个整数$n$。
+
+接下来$n-1$行，每行三个正整数$u,v,w$表示一条在$T_1$中的边，连接了$u,v$两点，长度为$w$。
+
+接下来$n-1$行，每行三个正整数$u,v,w$表示一条在$T_2$中的边，连接了$u,v$两点，长度为$w$。
+
+
+\Output
+
+输出一个数，表示答案。
+\Example
+\begin{example}
+\exmpfile{/tree2/ex_tree1.in}{/tree2/ex_tree1.ans} %
+\end{example}
+
+\Constraints
+
+对于$20 \%$的数据，保证$n \leq 1000$。
+
+对于$60 \%$的数据，保证$n\leq 30000$。
+
+对于$80 \%$的数据，保证$n \leq 50000$。
+
+对于$100 \%$的数据，保证$n\leq 10^5, w\leq 10^9$。
+
+\end{problem}

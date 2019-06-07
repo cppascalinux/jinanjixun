@@ -1,0 +1,67 @@
+#include <iostream>
+#include <cstdio>
+#include <cctype>
+#include <vector>
+#define il inline
+#define re register
+#define gc getchar
+#define LL long long
+#define file "distribution"
+using namespace std;
+#define getchar() (p1 == p2 && (p2 = (p1 = buf) + fread(buf, 1, 1 << 21, stdin), p1 == p2) ? EOF : *p1++)
+char buf[1 << 21], *p1 = buf, *p2 = buf;
+int read()
+{
+    re bool p = 0;
+    re char ch;
+    re int s = 0;
+    while (ch = gc(), p |= ch == '-', !isdigit(ch))
+        ;
+    while (s = s * 10 + ch - '0', isdigit(ch = gc()))
+        ;
+    return s * (p ? -1 : 1);
+}
+struct io
+{
+    char obuf[22 << 20], *t;
+    int a[40];
+    io() : t(obuf)
+    {
+        freopen(file".in", "r", stdin);
+        freopen(file".out", "w", stdout);
+    }
+    ~io()
+    {
+        fwrite(obuf, 1, t - obuf, stdout);
+    }
+    template <class T>
+    inline void print(register T u)
+    {
+        static int *q = a;
+        if (u < 0)
+            *t++ = '-', u = -u;
+        if (!u)
+            *t++ = 48;
+        else
+        {
+            while (u)
+                *q++ = u % 10 + 48, u /= 10;
+            while (q != a)
+                *t++ = *--q;
+        }
+        *t++ = '\n';
+    }
+} ip;
+#define print ip.print
+vector<int> qwqwqwq;
+int main()
+{
+	int T;
+	T = read();
+	for (int i = 1; i <= 100; ++i)
+		for (int j = 1; j <= min(i, 100 - i); ++j)
+			qwqwqwq.push_back(i);
+	while (T--)
+		print(qwqwqwq[rand() % 2500]);
+	return 0;
+}

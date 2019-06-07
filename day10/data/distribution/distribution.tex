@@ -1,0 +1,49 @@
+\begin{problem}{Distribution}
+{stdin}{stdout}{2 second}{1024 megabytes}
+
+令$p$是一个$(0,1)$之间的实数，$n$是一个$[1,100]$之间的正整数。
+
+令$X_1, X_2, \dots, X_n$为$n$个独立的随机变量，并且满足$\Pr(X_i=1)=p, \Pr(X_i=0)=1-p$，考虑下面的随机变量
+
+$$X=\frac{X_1+X_2+\dots + X_n +u -np}{\sqrt{np(1-p)}}$$
+
+其中$u$是在$[-0.5,0.5]$之间均匀分布的实数随机变量，与$Xi$独立。
+
+现在对于某个$n$给出了很多个$X$的取值，想让你猜出$n$的值。
+
+\Input
+
+第一行一个整数$T$，表示数据组数。接下来一行一个实数$p$在$(0,1)$之间，小数点之后至多两位。
+
+接下来$T$行，每行开始一个整数$N$，接下来$N$个实数，表示随机出来的若干个$X$的取值。
+
+保证这里隐藏的$n$也是在$[1,100]$之间随机生成的。
+
+\Output
+
+共$T$行，每行一个整数，表示你猜出来的$n$的取值。
+
+\Example
+\begin{example}
+\exmpfile{/distribution/ex_distribution1.in}{/distribution/ex_distribution1.ans} %
+\end{example}
+
+\Constraints
+
+对于$100\%$的数据，$T=30, N=10^4$，其中第$i$组数据满足$p=0.05+0.09*i$。
+
+\Scoring
+
+令$s=\sum |your_i-answer_i|$，也就是你的答案和标准答案的差的总和。
+
+如果$s\leq 5$，你将获得$10$分。
+
+如果$s\leq 15$，你将获得$9$分。
+
+如果$s\leq 150$，你将获得$7$分。
+
+如果$s\leq 300$，你将获得$5$分。
+
+如果$s\leq 600$，你将获得$3$分。
+
+\end{problem}

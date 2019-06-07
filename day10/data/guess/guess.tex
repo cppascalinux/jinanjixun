@@ -1,0 +1,32 @@
+\begin{problem}{Guess}
+{stdin}{stdout}{2 second}{1024 megabytes}
+
+你要猜一个在$1$到$n+1$之间的整数。每次你可以询问一个$i+0.5(1 \leq i\leq n)$的数，它会告诉你比它大了还是比它小了。询问$i+0.5$的代价是$a_i$，$a_i$是$1\sim 9$之间的整数。
+
+请问用最优策略，最坏的情况下的代价是多少。最优策略也就是使得最坏情况代价最小的策略。
+
+\Input
+
+输入总共一行，一个字符串，长度为$n$，第$i$个字母表示$a_i$。
+
+\Output
+
+输出一个正整数表示最坏情况下的代价。
+\Example
+\begin{example}
+\exmpfile{/guess/ex_guess1.in}{/guess/ex_guess1.ans} %
+\end{example}
+
+\Constraints
+
+对于$20\%$的数据，$n\leq 100$。
+
+对于$40\%$的数据，$n\leq 10^3$。
+
+对于$60\%$的数据，$n\leq 10^4$。
+
+对于$80\%$的数据，$n\leq 10^5$。
+
+对于$100\%$的数据，$n\leq 5 \times 10^5$。
+
+\end{problem}
