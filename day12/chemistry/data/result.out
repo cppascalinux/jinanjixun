@@ -1,0 +1,102 @@
+test 1: AC 1 is 1 while k is 1
+test 2: AC 1 is 1 while k is 1
+test 3: AC 1 is 2 while k is 2
+test 4: AC 1 is 1 while k is 1
+test 5: AC 1 is 2 while k is 2
+test 6: AC expected -1 read -1
+test 7: AC 1 is 1 while k is 1
+test 8: AC 1 is 2 while k is 2
+test 9: AC expected -1 read -1
+test 10: AC 1 is 4 while k is 4
+test 11: AC 1 is 1 while k is 1
+test 12: AC 1 is 2 while k is 2
+test 13: AC 1 is 3 while k is 3
+test 14: AC 1 is 4 while k is 4
+test 15: AC expected -1 read -1
+test 16: AC 1 is 1 while k is 1
+test 17: AC 1 is 2 while k is 2
+test 18: AC 1 is 3 while k is 3
+test 19: AC 1 is 4 while k is 4
+test 20: AC expected -1 read -1
+test 21: AC expected -1 read -1
+test 22: AC 1 is 1 while k is 1
+test 23: AC 1 is 2 while k is 2
+test 24: AC 1 is 3 while k is 3
+test 25: AC 1 is 4 while k is 4
+test 26: AC 1 is 5 while k is 5
+test 27: AC 1 is 6 while k is 6
+test 28: AC expected -1 read -1
+test 29: AC 1 is 1 while k is 1
+test 30: AC 1 is 2 while k is 2
+test 31: AC 1 is 3 while k is 3
+test 32: AC 1 is 4 while k is 4
+test 33: AC 1 is 5 while k is 5
+test 34: AC 1 is 6 while k is 6
+test 35: AC expected -1 read -1
+test 36: AC 1 is 8 while k is 8
+test 37: AC 1 is 1 while k is 1
+test 38: AC 1 is 2 while k is 2
+test 39: AC 1 is 3 while k is 3
+test 40: AC 1 is 4 while k is 4
+test 41: AC 1 is 5 while k is 5
+test 42: AC 1 is 6 while k is 6
+test 43: AC 1 is 7 while k is 7
+test 44: AC 1 is 8 while k is 8
+test 45: AC expected -1 read -1
+test 46: AC 1 is 1 while k is 1
+test 47: AC 1 is 2 while k is 2
+test 48: AC 1 is 3 while k is 3
+test 49: AC 1 is 4 while k is 4
+test 50: AC 1 is 5 while k is 5
+test 51: AC 1 is 6 while k is 6
+test 52: AC 1 is 7 while k is 7
+test 53: AC 1 is 8 while k is 8
+test 54: AC expected -1 read -1
+test 55: AC expected -1 read -1
+test 56: AC 1 is 6884 while k is 6884
+test 57: AC 1 is 18072 while k is 18072
+test 58: AC 1 is 31560 while k is 31560
+test 59: AC 1 is 26 while k is 26
+test 60: AC 1 is 49168 while k is 49168
+test 61: AC 1 is 30607 while k is 30607
+test 62: AC 1 is 35751 while k is 35751
+test 63: AC 1 is 44035 while k is 44035
+test 64: AC 1 is 6578 while k is 6578
+test 65: AC 1 is 25017 while k is 25017
+test 66: AC 1 is 21641 while k is 21641
+test 67: AC 1 is 2217 while k is 2217
+test 68: AC 1 is 7071 while k is 7071
+test 69: AC 1 is 11325 while k is 11325
+test 70: AC 1 is 4623 while k is 4623
+test 71: AC 1 is 22570 while k is 22570
+test 72: AC 1 is 21937 while k is 21937
+test 73: AC 1 is 21270 while k is 21270
+test 74: AC 1 is 2107 while k is 2107
+test 75: AC 1 is 15185 while k is 15185
+test 76: AC 1 is 91288 while k is 91288
+test 77: AC 1 is 50926 while k is 50926
+test 78: AC 1 is 4239 while k is 4239
+test 79: AC 1 is 4393 while k is 4393
+test 80: AC 1 is 46307 while k is 46307
+test 81: AC 1 is 70648 while k is 70648
+test 82: AC expected -1 read -1
+test 83: AC 1 is 66855 while k is 66855
+test 84: AC expected -1 read -1
+test 85: AC expected -1 read -1
+test 86: AC 1 is 63384 while k is 63384
+test 87: AC 1 is 69701 while k is 69701
+test 88: AC 1 is 35443 while k is 35443
+test 89: AC expected -1 read -1
+test 90: AC expected -1 read -1
+test 91: AC expected -1 read -1
+test 92: AC expected -1 read -1
+test 93: AC expected -1 read -1
+test 94: AC expected -1 read -1
+test 95: AC 1 is 94086 while k is 94086
+test 96: AC 1 is 52763 while k is 52763
+test 97: AC expected -1 read -1
+test 98: AC 1 is 44607 while k is 44607
+test 99: AC expected -1 read -1
+test 100: AC 1 is 23002 while k is 23002
+test 101: AC 1 is 65536 while k is 65536
+test 102: AC 1 is 65537 while k is 65537
