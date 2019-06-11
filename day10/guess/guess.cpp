@@ -2,34 +2,40 @@
 #include<cstdio>
 #include<cstring>
 #include<algorithm>
-#include<ctime>
 using namespace std;
 int n;
-char s[100009];
-int f[1009][1009],g[1009][1009];
+char s[500009];
+int fl[209][500009],fr[209][500009];
 void dp()
 {
-	memset(f,0x7F,sizeof(f));
 	for(int i=1;i<=n+1;i++)
-		f[i][i]=0;
-	for(int i=2;i<=n+1;i++)
-		for(int j=1;j<=n+1-i+1;j++)
+		fl[0][i]=fr[0][i]=i;
+	for(int i=1;i<=200;i++)
+	{
+		for(int j=1;j<=n+1;j++)
+			fl[i][j]=fl[i-1][j],fr[i][j]=fr[i-1][j];
+		for(int j=1;j<=n;j++)
 		{
-			int l=j,r=j+i-1;
-			for(int k=l;k<=r-1;k++)
+			if(s[j]<=i)
 			{
-				int nv=max(f[l][k],f[k+1][r])+s[k];
-				if(nv<f[l][r])
-					f[l][r]=nv,g[l][r]=k;
+				int lm=fl[i-s[j]][j],rm=fr[i-s[j]][j+1];
+				fr[i][lm]=max(fr[i][lm],rm),fl[i][rm]=min(fl[i][rm],lm);
 			}
 		}
-	printf("%d",f[1][n+1]);
-}
-void output(int l,int r)
-{
-	printf("l:%d r:%d\n",l,r);
-	if(l<r)
-		output(l,g[l][r]),output(g[l][r]+1,r);
+		for(int j=2;j<=n+1;j++)
+			fr[i][j]=max(fr[i][j],fr[i][j-1]);
+		for(int j=n;j>=1;j--)
+			fl[i][j]=min(fl[i][j],fl[i][j+1]);
+	}
+	// for(int i=0;i<=4;i++)
+	// 	for(int j=1;j<=n+1;j++)
+	// 		printf("i:%d j:%d fl:%d fr:%d\n",i,j,fl[i][j],fr[i][j]);
+	for(int i=0;i<=200;i++)
+		if(fr[i][1]==n+1)
+		{
+			printf("%d",i);
+			break;
+		}
 }
 int main()
 {
@@ -40,7 +46,5 @@ int main()
 	for(int i=1;i<=n;i++)
 		s[i]-='0';
 	dp();
-	// output(1,n+1);
-	cerr<<clock();
 	return 0;
 }
